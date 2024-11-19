@@ -15,12 +15,10 @@ class PasswordResetCompleteCustomView(PasswordResetCompleteView):
 
 
 class NewsListAPIView(ListAPIView):
-    permission_classes = (IsAuthenticated,)
     serializer_class = NewsSerializer
     queryset = News.objects.all()
 
 
 class ServiceAPIView(ListAPIView):
-    permission_classes = (IsAuthenticated,)
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
