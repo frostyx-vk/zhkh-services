@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.contrib.auth.views import PasswordResetCompleteView
+from django.contrib.auth.views import PasswordResetConfirmView
 from django.urls import include, path
 
+from web.views import PasswordResetCompleteCustomView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,9 +28,10 @@ urlpatterns = [
     path('auth/', include('djoser.urls.authtoken')),
     path('auth/', include('djoser.urls.jwt')),
 
-    path('accounts/', include('accounts.urls')),
-    path('password/reset/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-
+    path('password/reset/confirm/<str:uidb64>/<str:token>/', PasswordResetConfirmView.as_view(),
+         name='password_reset_confirm'),
+    path('password/reset/complete/', PasswordResetCompleteCustomView.as_view(), name='password_reset_complete'),
+    path('web/', include('web.urls')),
 ]
 
 if settings.DEBUG:
