@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:16
+    restart: always
+    ports:
+      - ${POSTGRES_PORT?5432}:${POSTGRES_PORT?5432}
+    container_name: zhkh_postgres
+    volumes:
+      - ~/.pg/pg_data/zhkh_service:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  web:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: zhkh_service_web:latest
+    container_name: zhkh_service_web
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    command: >
+      bash -c "./manage.py collectstatic --noinput && ./manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  static_volume:
+  media_volume:
