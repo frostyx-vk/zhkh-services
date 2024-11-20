@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.views import PasswordResetCompleteView
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated
 
 from web.models import AboutPortal, Contact, News, Service
 from web.serializers import AboutPortalSerializer, ContactSerializer, NewsSerializer, ServiceSerializer
