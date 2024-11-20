@@ -3,8 +3,8 @@ from django.contrib.auth.views import PasswordResetCompleteView
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from web.models import News, Service
-from web.serializers import NewsSerializer, ServiceSerializer
+from web.models import AboutPortal, Contact, News, Service
+from web.serializers import AboutPortalSerializer, ContactSerializer, NewsSerializer, ServiceSerializer
 
 
 class PasswordResetCompleteCustomView(PasswordResetCompleteView):
@@ -22,3 +22,14 @@ class NewsListAPIView(ListAPIView):
 class ServiceAPIView(ListAPIView):
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
+
+
+class ContactAPIView(ListAPIView):
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+
+
+class AboutPortalAPIView(ListAPIView):
+    serializer_class = AboutPortalSerializer
+    queryset = AboutPortal.objects.all()
+
