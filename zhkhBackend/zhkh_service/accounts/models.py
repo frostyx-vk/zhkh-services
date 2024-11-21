@@ -14,6 +14,7 @@ class ProfilePortal(models.Model):
     number_ls = models.PositiveIntegerField(verbose_name='Номер лицевого счета', blank=True)
     address = models.CharField(verbose_name='Адрес', max_length=255, blank=True)
     square = models.PositiveIntegerField(verbose_name='Площадь', blank=True)
+    type = models.CharField(choices=TypeProperty.choices, default=TypeProperty.HABITABLE, max_length=255, blank=True)
 
     class Meta:
         verbose_name = 'Профиль портала'

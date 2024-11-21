@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'djoser',
 
     'accounts',
+    'communication',
     'web'
 ]
 
