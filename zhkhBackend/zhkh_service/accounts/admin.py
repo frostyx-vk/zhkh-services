@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-from accounts.models import ProfilePortal
+from accounts.models import User
 
 
-@admin.register(ProfilePortal)
-class ProfilePortalAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(User)

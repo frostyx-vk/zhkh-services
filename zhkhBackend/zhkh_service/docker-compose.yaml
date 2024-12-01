@@ -16,7 +16,10 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
+    volumes:
+      - .:/zhkh_service
     image: zhkh_service_web:latest
+    restart: always
     container_name: zhkh_service_web
     depends_on:
       - db
@@ -24,8 +27,7 @@ services:
       - .env
     ports:
       - "8000:8000"
-    command: >
-      bash -c "./manage.py collectstatic --noinput && ./manage.py runserver 0.0.0.0:8000"
+    command: python manage.py runserver 0.0.0.0:8000
 
 volumes:
   static_volume:

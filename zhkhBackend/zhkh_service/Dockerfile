@@ -17,4 +17,6 @@ RUN mkdir /zhkh_service/static && mkdir /zhkh_service/media
 COPY . .
 RUN pip install -r requirements.txt
 
-CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8000"]
+#CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8000 --reload"]
+
+#CMD ["gunicorn"  , "-b", "0.0.0.0:8000", "zhkh_service.wsgi:application", "--reload"]
